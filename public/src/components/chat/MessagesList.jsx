@@ -1,12 +1,16 @@
 /** @jsx React.DOM */
+
 'use strict';
+
 var MessagesList = React.createClass({
+
   getInitialState: function () {
     return { messages: [] };
   },
+
   addMessage: function (message) {
-    var messages = this.state.messages,
-        container = this.refs.messageContainer.getDOMNode();
+    var messages = this.state.messages;
+    var container = this.refs.messageContainer.getDOMNode();
     messages.push(message);
     this.setState({ messages: messages });
     // Smart scrolling - when the user is
@@ -18,6 +22,7 @@ var MessagesList = React.createClass({
       this.scrolled = false;
     }
   },
+
   componentDidUpdate: function () {
     if (this.scrolled) {
       return;
@@ -25,6 +30,7 @@ var MessagesList = React.createClass({
     var container = this.refs.messageContainer.getDOMNode();
     container.scrollTop = container.scrollHeight;
   },
+
   render: function () {
     var messages;
     messages = this.state.messages.map(function (m) {
@@ -42,3 +48,4 @@ var MessagesList = React.createClass({
     );
   }
 });
+
